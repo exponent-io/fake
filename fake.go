@@ -64,6 +64,11 @@ var (
 	ErrNoSamplesFn = func(lang string) error { return fmt.Errorf("No samples found for language: %s", lang) }
 )
 
+// Seed sets the seed of the random number generator. If not called, the RNG will be seeded with the current time.
+func Seed(seed int64) {
+	r = rand.New(rand.NewSource(seed))
+}
+
 // GetLangs returns a slice of available languages
 func GetLangs() []string {
 	var langs []string
